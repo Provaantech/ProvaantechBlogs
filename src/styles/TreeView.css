@@ -1,0 +1,317 @@
+/* Tree View Debug Panel Styles */
+
+/* Default TreeView styles */
+.tree-view-wrapper {
+  position: fixed;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  z-index: 998;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Right Panel Position (default) */
+.tree-view-wrapper.position-right {
+  top: 80px;
+  right: 390px;
+  width: 350px;
+  max-height: calc(100vh - 120px);
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Bottom Dock Position */
+.tree-view-wrapper.position-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 40vh;
+  border-radius: 0;
+  border-top: 1px solid #444;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal Overlay Position */
+.tree-view-wrapper.position-modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 800px;
+  height: 80vh;
+  border-radius: 12px;
+  z-index: 1001;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: fadeInScale 0.3s ease-out;
+}
+
+.tree-view-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tree-view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #0f0f0f;
+  border-bottom: 1px solid #444;
+}
+
+.tree-view-close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.tree-view-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.tree-view-header h3 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tree-view-header p {
+  margin: 0;
+  font-size: 11px;
+  color: #999;
+}
+
+.tree-view-content {
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* Position-specific content sizing */
+.tree-view-wrapper.position-right .tree-view-content {
+  max-height: calc(100vh - 160px);
+}
+
+.tree-view-wrapper.position-bottom .tree-view-content {
+  height: calc(40vh - 80px);
+}
+
+.tree-view-wrapper.position-modal .tree-view-content {
+  height: calc(80vh - 80px);
+}
+
+.tree-view-output {
+  white-space: pre-wrap;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #e0e0e0;
+}
+
+/* Syntax highlighting for tree view */
+.tree-view-output .token-property {
+  color: #79c0ff;
+}
+
+.tree-view-output .token-string {
+  color: #a5d6ff;
+}
+
+.tree-view-output .token-number {
+  color: #79c0ff;
+}
+
+.tree-view-output .token-boolean {
+  color: #ff7b72;
+}
+
+.tree-view-output .token-keyword {
+  color: #ff7b72;
+}
+
+.tree-view-output .token-punctuation {
+  color: #c9d1d9;
+}
+
+/* Time travel debug controls */
+.debug-timetravel-panel {
+  background: #0d1117;
+  border-top: 1px solid #444;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.debug-timetravel-button {
+  background: #21262d;
+  border: 1px solid #444;
+  color: #c9d1d9;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  margin-right: 8px;
+  transition: all 0.2s ease;
+}
+
+.debug-timetravel-button:hover {
+  background: #30363d;
+  border-color: #666;
+}
+
+.debug-timetravel-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.debug-timetravel-panel-slider {
+  width: 100%;
+  margin: 8px 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: #444;
+  border-radius: 2px;
+  outline: none;
+}
+
+.debug-timetravel-panel-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #0969da;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.debug-timetravel-panel-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #0969da;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+.debug-timetravel-panel-button {
+  background: #238636;
+  border: 1px solid #2ea043;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  margin: 2px;
+  transition: all 0.2s ease;
+}
+
+.debug-timetravel-panel-button:hover {
+  background: #2ea043;
+}
+
+/* Scrollbar styling for tree view */
+.tree-view-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tree-view-content::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+.tree-view-content::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.tree-view-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tree-view-wrapper {
+    width: calc(100vw - 40px);
+    max-width: 300px;
+    top: 60px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tree-view-wrapper {
+    display: none; /* Hide on very small screens to avoid overlap */
+  }
+}
+
+/* Animation for showing/hiding */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tree-view-wrapper {
+  animation: fadeInUp 0.3s ease-out;
+}

@@ -1,0 +1,391 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  min-width: 400px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  color: #333;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #666;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background-color: #e9ecef;
+  color: #333;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+/* Dialog Styles */
+.Dialog__buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.Dialog__buttons .Button {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.Dialog__buttons .Button:hover {
+  background-color: #f5f5f5;
+}
+
+.Dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.Dialog__actions .Button {
+  padding: 8px 16px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.Dialog__actions .Button:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.Dialog__actions .Button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Input Styles */
+.Input__wrapper {
+  margin-bottom: 16px;
+}
+
+.Input__label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.Input__input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.Input__input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Image Node Styles */
+.editor-image {
+  cursor: default;
+  display: block;
+  position: relative;
+  user-select: none;
+  max-width: 100%;
+}
+
+.editor-image img {
+  max-width: 100%;
+  height: auto;
+  cursor: default;
+  border-radius: 4px;
+}
+
+.focused {
+  outline: 2px solid rgb(60, 132, 244);
+  user-select: none;
+}
+
+.focused.draggable {
+  cursor: grab;
+}
+
+.focused.draggable:active {
+  cursor: grabbing;
+}
+
+.image-caption-container {
+  display: block;
+  background: #f4f4f4;
+  border: 1px solid #d0d7de;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  color: #1f2328;
+  min-height: 20px;
+  overflow: hidden;
+  padding: 8px;
+  position: relative;
+  word-break: break-word;
+}
+
+.ImageNode__contentEditable {
+  min-height: 20px;
+  border: 0px;
+  resize: none;
+  cursor: text;
+  caret-color: rgb(5, 5, 5);
+  display: block;
+  position: relative;
+  tab-size: 1;
+  outline: 0px;
+  padding: 0;
+  user-select: text;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ImageNode__placeholder {
+  color: #999;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 8px;
+  left: 8px;
+  font-size: 12px;
+  user-select: none;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.image-caption-button {
+  display: block;
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #444;
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 6px 8px;
+  text-align: center;
+  user-select: none;
+  white-space: nowrap;
+  pointer-events: all;
+  z-index: 10;
+}
+
+.image-caption-button:hover {
+  background-color: #555;
+  border-color: #444;
+}
+
+.image-resizer {
+  border: 2px solid rgb(60, 132, 244);
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  top: 0;
+  left: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+.image-node-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.image-node-wrapper.focused {
+  outline: 2px solid rgb(60, 132, 244);
+  outline-offset: 2px;
+}
+
+.image-resizer-handle {
+  background-color: rgb(60, 132, 244);
+  border: 1px solid #fff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  height: 10px;
+  position: absolute;
+  width: 10px;
+  pointer-events: all;
+  z-index: 10;
+}
+
+.image-resizer-handle-n {
+  cursor: n-resize;
+  left: calc(50% - 5px);
+  top: -6px;
+}
+
+.image-resizer-handle-ne {
+  cursor: ne-resize;
+  right: -6px;
+  top: -6px;
+}
+
+.image-resizer-handle-e {
+  cursor: e-resize;
+  right: -6px;
+  top: calc(50% - 5px);
+}
+
+.image-resizer-handle-se {
+  cursor: se-resize;
+  bottom: -6px;
+  right: -6px;
+}
+
+.image-resizer-handle-s {
+  bottom: -6px;
+  cursor: s-resize;
+  left: calc(50% - 5px);
+}
+
+.image-resizer-handle-sw {
+  bottom: -6px;
+  cursor: sw-resize;
+  left: -6px;
+}
+
+.image-resizer-handle-w {
+  cursor: w-resize;
+  left: -6px;
+  top: calc(50% - 5px);
+}
+
+.image-resizer-handle-nw {
+  cursor: nw-resize;
+  left: -6px;
+  top: -6px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
