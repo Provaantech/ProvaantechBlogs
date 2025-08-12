@@ -6,7 +6,7 @@
 import React, { useState } from 'react';
 import { useSettings } from '../contexts/SettingsContext';
 import Toast from './Toast';
-
+ 
 function Switch({ onClick, checked, text }) {
   return (
     <div className="setting-item">
@@ -85,7 +85,7 @@ export default function Settings() {
         className={`settings-button ${showSettings ? 'active' : ''}`}
         onClick={() => setShowSettings(!showSettings)}
         title="Settings"
-      >
+      > 
         ⚙️
       </button>
       
@@ -201,7 +201,7 @@ export default function Settings() {
                 onClick={() => setOption('shouldAllowHighlightingWithBrackets', !shouldAllowHighlightingWithBrackets)}
                 checked={shouldAllowHighlightingWithBrackets}
                 text="Use Brackets for Highlighting"
-              />
+              /> 
               <Switch
                 onClick={() => setOption('selectionAlwaysOnDisplay', !selectionAlwaysOnDisplay)}
                 checked={selectionAlwaysOnDisplay}

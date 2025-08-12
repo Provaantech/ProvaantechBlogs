@@ -9,7 +9,7 @@ import { CodeNode, CodeHighlightNode } from '@lexical/code';
 import { TableNode, TableCellNode, TableRowNode } from '@lexical/table';
 import { LinkNode, AutoLinkNode } from '@lexical/link';
 import { HashtagNode } from '@lexical/hashtag';
-import { MarkNode } from '@lexical/mark';
+import { MarkNode } from '@lexical/mark'; 
 import { OverflowNode } from '@lexical/overflow';
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 import { ImageNode } from '../nodes/ImageNode';

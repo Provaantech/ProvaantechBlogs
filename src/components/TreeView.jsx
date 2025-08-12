@@ -15,7 +15,7 @@ export default function TreeView() {
   const [editor] = useLexicalComposerContext();
   const { settings, setOption } = useSettings();
   const { treeViewPosition } = settings;
-  
+   
   const handleClose = () => {
     setOption('showTreeView', false);
   };

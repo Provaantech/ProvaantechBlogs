@@ -3,7 +3,7 @@
  * Full functionality JavaScript version
  */
 
-import { LexicalComposer } from '@lexical/react/LexicalComposer';
+import { LexicalComposer } from '@lexical/react/LexicalComposer'; 
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
@@ -25,6 +25,7 @@ import ComponentPickerPlugin from '../plugins/ComponentPickerPlugin';
 import ImagesPlugin from '../plugins/ImagesPlugin';
 import TreeView from './TreeView';
 import { useSettings } from '../contexts/SettingsContext';
+
 
 // URL matchers for auto-linking
 const URL_MATCHER = /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
@@ -53,7 +54,7 @@ export default function Editor() {
   const { settings } = useSettings();
   const { showTreeView, treeViewPosition } = settings;
   
-  // Add bottom margin when tree view is in bottom position
+  // Add bottom margin when tree view is in bottom position 
   const containerStyle = showTreeView && treeViewPosition === 'bottom' 
     ? { marginBottom: '40vh' }
     : {};

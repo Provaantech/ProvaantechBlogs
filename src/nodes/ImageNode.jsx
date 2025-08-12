@@ -6,7 +6,7 @@
 import {
   $applyNodeReplacement,
   createEditor,
-  DecoratorNode,
+  DecoratorNode, 
 } from 'lexical';
 import * as React from 'react';
 import { Suspense } from 'react';

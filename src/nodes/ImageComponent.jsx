@@ -14,7 +14,7 @@ import { useLexicalNodeSelection } from '@lexical/react/useLexicalNodeSelection'
 import { mergeRegister } from '@lexical/utils';
 import {
   $getNodeByKey,
-  $getSelection,
+  $getSelection, 
   $isNodeSelection,
   $setSelection,
   CLICK_COMMAND,
