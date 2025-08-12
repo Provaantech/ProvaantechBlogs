@@ -18,13 +18,21 @@ import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { AutoLinkPlugin } from '@lexical/react/LexicalAutoLinkPlugin';
 import { HashtagPlugin } from '@lexical/react/LexicalHashtagPlugin';
 
-import EditorTheme from '../styles/EditorTheme';
+import EditorTheme from '../themes/EditorTheme';
 import EditorNodes from '../constants/EditorNodes';
 import ToolbarPlugin from '../plugins/ToolbarPlugin';
 import ComponentPickerPlugin from '../plugins/ComponentPickerPlugin';
 import ImagesPlugin from '../plugins/ImagesPlugin';
+import FloatingTextFormatToolbarPlugin from '../plugins/FloatingTextFormatToolbarPlugin';
+import FloatingLinkEditorPlugin from '../plugins/FloatingLinkEditorPlugin';
+import MentionsPlugin from '../plugins/MentionsPlugin';
+import EmojiPlugin from '../plugins/EmojiPlugin';
+import EmojisPlugin from '../plugins/EmojisPlugin';
+import EmojiPickerPlugin from '../plugins/EmojiPickerPlugin';
+import ActionsPlugin from '../plugins/ActionsPlugin';
 import TreeView from './TreeView';
 import { useSettings } from '../contexts/SettingsContext';
+import { useState, useRef } from 'react';
 
 // URL matchers for auto-linking
 const URL_MATCHER = /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
@@ -52,11 +60,19 @@ function Placeholder() {
 export default function Editor() {
   const { settings } = useSettings();
   const { showTreeView, treeViewPosition } = settings;
+  const [floatingAnchorElem, setFloatingAnchorElem] = useState(null);
+  const [isLinkEditMode, setIsLinkEditMode] = useState(false);
   
   // Add bottom margin when tree view is in bottom position
   const containerStyle = showTreeView && treeViewPosition === 'bottom' 
     ? { marginBottom: '40vh' }
     : {};
+    
+  const onRef = (_floatingAnchorElem) => {
+    if (_floatingAnchorElem !== null) {
+      setFloatingAnchorElem(_floatingAnchorElem);
+    }
+  };
   
   const initialConfig = {
     namespace: 'MyEditor',
@@ -73,7 +89,13 @@ export default function Editor() {
         <ToolbarPlugin />
         <div className="editor-inner">
           <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
+            contentEditable={
+              <div className="editor-scroller">
+                <div className="editor" ref={onRef}>
+                  <ContentEditable className="editor-input" />
+                </div>
+              </div>
+            }
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />
@@ -87,6 +109,24 @@ export default function Editor() {
           <TablePlugin />
           <HashtagPlugin />
           <ImagesPlugin captionsEnabled={true} />
+          <MentionsPlugin />
+          <EmojiPlugin />
+          <EmojisPlugin />
+          <EmojiPickerPlugin />
+          <ActionsPlugin />
+          {floatingAnchorElem && (
+            <>
+              <FloatingTextFormatToolbarPlugin
+                anchorElem={floatingAnchorElem}
+                setIsLinkEditMode={setIsLinkEditMode}
+              />
+              <FloatingLinkEditorPlugin
+                anchorElem={floatingAnchorElem}
+                isLinkEditMode={isLinkEditMode}
+                setIsLinkEditMode={setIsLinkEditMode}
+              />
+            </>
+          )}
         </div>
       </div>
       {settings.showTreeView && <TreeView />}

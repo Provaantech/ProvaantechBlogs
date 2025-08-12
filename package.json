@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@excalidraw/excalidraw": "^0.18.0",
+    "@floating-ui/react": "^0.26.0",
     "@lexical/clipboard": "^0.34.0",
     "@lexical/code": "^0.34.0",
     "@lexical/file": "^0.34.0",
@@ -25,15 +27,19 @@
     "@lexical/selection": "^0.34.0",
     "@lexical/table": "^0.34.0",
     "@lexical/utils": "^0.34.0",
-    "@floating-ui/react": "^0.26.0",
+    "@lexical/yjs": "^0.34.0",
+    "@types/lodash-es": "^4.17.12",
     "date-fns": "^4.1.0",
     "katex": "^0.16.10",
     "lexical": "^0.34.0",
     "lodash-es": "^4.17.21",
     "prettier": "^2.8.8",
+    "prismjs": "^1.30.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-error-boundary": "^3.1.4"
+    "react-error-boundary": "^3.1.4",
+    "y-websocket": "^3.0.0",
+    "yjs": "^13.6.27"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",

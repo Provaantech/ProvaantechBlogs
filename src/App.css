@@ -1,3 +1,5 @@
+@import './styles/ActionsPlugin.css';
+
 /* App Layout Styles */
 .app {
   min-height: 100vh;
@@ -39,6 +41,22 @@
 
 .app-footer p {
   margin: 0;
+}
+
+/* Global emoji styling fixes */
+.emoji,
+.emoji *,
+span[data-lexical-emoji],
+span[data-lexical-emoji] * {
+  background: transparent !important;
+  color: inherit !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline !important;
+  vertical-align: baseline !important;
 }
 
 /* Responsive Design */

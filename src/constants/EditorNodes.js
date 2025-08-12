@@ -13,6 +13,8 @@ import { MarkNode } from '@lexical/mark';
 import { OverflowNode } from '@lexical/overflow';
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 import { ImageNode } from '../nodes/ImageNode';
+import { EmojiNode } from '../nodes/EmojiNode.jsx';
+import { MentionNode } from '../nodes/MentionNode';
 
 /**
  * Complete list of nodes for full playground functionality
@@ -54,6 +56,10 @@ const EditorNodes = [
   
   // Image nodes
   ImageNode,
+  
+  // Custom nodes
+  EmojiNode,
+  MentionNode,
 ];
 
 export default EditorNodes;

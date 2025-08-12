@@ -46,6 +46,9 @@ import {
   $isTableNode,
 } from '@lexical/table';
 import { INSERT_IMAGE_COMMAND, InsertImageDialog } from './ImagesPlugin';
+import { INSERT_EMOJI_COMMAND } from './EmojiPlugin';
+import { useActionsPlugin } from './ActionsPlugin';
+import { getSelectedNode } from '../utils/getSelectedNode';
 
 const LowPriority = 1;
 
@@ -77,6 +80,9 @@ export default function ToolbarPlugin() {
   const [textColor, setTextColor] = useState('#000000');
   const [backgroundColor, setBackgroundColor] = useState('#FFFF00');
   const [showImageModal, setShowImageModal] = useState(false);
+  
+  // Use the ActionsPlugin hook
+  const { openActionsModal, ActionsModal } = useActionsPlugin();
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -619,10 +625,30 @@ export default function ToolbarPlugin() {
       </button>
       <button
         onClick={() => setShowImageModal(true)}
-        className="toolbar-item"
+        className="toolbar-item spaced"
         title="Insert Image"
         aria-label="Insert Image">
         🖼️
+      </button>
+      <button
+        onClick={() => {
+          editor.dispatchCommand(INSERT_EMOJI_COMMAND);
+        }}
+        className="toolbar-item spaced"
+        title="Insert Emoji"
+        aria-label="Insert Emoji">
+        😀
+      </button>
+      
+      <Divider />
+      
+      {/* Document Actions */}
+      <button
+        onClick={openActionsModal}
+        className="toolbar-item"
+        title="Document Actions - Export, Import, Clear"
+        aria-label="Document Actions">
+        📄
       </button>
       
       {/* Image Modal */}
@@ -647,27 +673,14 @@ export default function ToolbarPlugin() {
           </div>
         </div>
       )}
+      
+      {/* Actions Modal */}
+      {ActionsModal}
     </div>
   );
 }
 
 // Helper functions
-function getSelectedNode(selection) {
-  const anchor = selection.anchor;
-  const focus = selection.focus;
-  const anchorNode = selection.anchor.getNode();
-  const focusNode = selection.focus.getNode();
-  if (anchorNode === focusNode) {
-    return anchorNode;
-  }
-  const isBackward = selection.isBackward();
-  if (isBackward) {
-    return $isAtNodeEnd(focus) ? anchorNode : focusNode;
-  } else {
-    return $isAtNodeEnd(anchor) ? focusNode : anchorNode;
-  }
-}
-
 function createParagraphNode() {
   return $createParagraphNode();
 }

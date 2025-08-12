@@ -1,0 +1,264 @@
+/**
+ * ActionsPlugin CSS
+ * Styles for the export/import/actions modal
+ */
+
+.ActionsPlugin__modal .Modal__content {
+  width: 600px;
+  max-width: 90vw;
+  max-height: 80vh;
+}
+
+.ActionsPlugin {
+  padding: 0;
+}
+
+.ActionsPlugin__tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.ActionsPlugin__tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.ActionsPlugin__tab:hover {
+  color: #374151;
+  background-color: #f9fafb;
+}
+
+.ActionsPlugin__tab--active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+  background-color: #f8fafc;
+}
+
+.ActionsPlugin__content {
+  min-height: 300px;
+}
+
+.ActionsPlugin__section {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ActionsPlugin__section h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.ActionsPlugin__section p {
+  margin: 0 0 20px 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.ActionsPlugin__format-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.ActionsPlugin__format-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ActionsPlugin__format-option:hover {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+}
+
+.ActionsPlugin__format-option input[type="radio"] {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.ActionsPlugin__format-option input[type="radio"]:checked + .ActionsPlugin__format-info {
+  color: #2563eb;
+}
+
+.ActionsPlugin__format-info {
+  flex: 1;
+}
+
+.ActionsPlugin__format-info span {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.ActionsPlugin__format-info small {
+  display: block;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.ActionsPlugin__textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  resize: vertical;
+  margin-bottom: 16px;
+}
+
+.ActionsPlugin__textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.ActionsPlugin__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.ActionsPlugin__action-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.ActionsPlugin__action-item--danger {
+  border-color: #fecaca;
+  background-color: #fef2f2;
+}
+
+.ActionsPlugin__action-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.ActionsPlugin__action-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.ActionsPlugin__action-item--danger .ActionsPlugin__action-info h4 {
+  color: #dc2626;
+}
+
+.ActionsPlugin__action-item--danger .ActionsPlugin__action-info p {
+  color: #991b1b;
+}
+
+/* Button variants */
+.Button--primary {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.Button--primary:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+.Button--primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.Button--secondary {
+  background-color: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.Button--secondary:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.Button--danger {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.Button--danger:hover {
+  background-color: #b91c1c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ActionsPlugin__modal .Modal__content {
+    width: 95vw;
+    margin: 20px auto;
+  }
+  
+  .ActionsPlugin__format-option {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .ActionsPlugin__action-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .ActionsPlugin__buttons {
+    flex-direction: column;
+  }
+}
