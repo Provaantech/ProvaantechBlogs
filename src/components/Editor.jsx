@@ -1,7 +1,10 @@
 /**
- * Complete Lexical Editor Component
- * Full functionality JavaScript version
+ * Complete Lexical Editor Component — UPDATED
+ * Adds Equation, Excalidraw, Poll and Emoji node registration + plugin components
+ * while preserving all original functionality.
  */
+
+import React, { useState } from 'react';
 
 import { LexicalComposer } from '@lexical/react/LexicalComposer'; 
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
@@ -14,7 +17,6 @@ import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPl
 import { TRANSFORMERS } from '@lexical/markdown';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
-// import { CodeHighlightPlugin } from '@lexical/react/LexicalCodeHighlightPlugin';
 import { AutoLinkPlugin } from '@lexical/react/LexicalAutoLinkPlugin';
 import { HashtagPlugin } from '@lexical/react/LexicalHashtagPlugin';
 
@@ -32,8 +34,18 @@ import EmojiPickerPlugin from '../plugins/EmojiPickerPlugin';
 import ActionsPlugin from '../plugins/ActionsPlugin';
 import TreeView from './TreeView';
 import { useSettings } from '../contexts/SettingsContext';
-import { useState, useRef } from 'react';
 
+/* --- NEW imports: nodes + plugin components --- */
+/* Make sure these files exist at the paths shown (I'll include short implementations below). */
+import { EmojiNode } from '../nodes/EmojiNode';
+import { EquationNode } from '../nodes/EquationNode';
+import { ExcalidrawNode } from '../nodes/ExcalidrawNode';
+import { PollNode } from '../nodes/PollNode';
+
+import EquationPlugin from '../plugins/EquationPlugin';
+import ExcalidrawPlugin from '../plugins/ExcalidrawPlugin';
+import PollPlugin from '../plugins/PollPlugin';
+/* --- end new imports --- */
 
 // URL matchers for auto-linking
 const URL_MATCHER = /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
@@ -75,10 +87,20 @@ export default function Editor() {
     }
   };
   
+  // --- IMPORTANT: extend existing EditorNodes non-destructively ---
+  // EditorNodes is the array your project already uses. We append extra nodes
+  // so existing nodes are kept intact.
   const initialConfig = {
     namespace: 'MyEditor',
     theme: EditorTheme,
-    nodes: EditorNodes,
+    nodes: [
+      ...EditorNodes,
+      // new nodes appended — if any are already inside EditorNodes this is harmless
+      EmojiNode,
+      EquationNode,
+      ExcalidrawNode,
+      PollNode,
+    ],
     onError(error) {
       console.error(error);
     },
@@ -114,6 +136,13 @@ export default function Editor() {
           <EmojiPlugin />
           <EmojisPlugin />
           <EmojiPickerPlugin />
+
+          {/* --- NEW plugin components added below (non-destructive) --- */}
+          <EquationPlugin />
+          <ExcalidrawPlugin />
+          <PollPlugin />
+          {/* --- end new plugin components --- */}
+
           <ActionsPlugin />
           {floatingAnchorElem && (
             <>
