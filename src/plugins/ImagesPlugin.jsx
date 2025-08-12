@@ -25,6 +25,9 @@ import { useEffect } from 'react';
 import * as React from 'react';
 
 import { $createImageNode, $isImageNode, ImageNode } from '../nodes/ImageNode';
+import Button from '../ui/Button';
+import TextInput from '../ui/TextInput';
+import FileInput from '../ui/FileInput';
 
 export const INSERT_IMAGE_COMMAND = createCommand('INSERT_IMAGE_COMMAND');
 

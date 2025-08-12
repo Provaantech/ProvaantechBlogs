@@ -116,10 +116,10 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  color: #656d76;
+  color: #edf2f8;
   font-size: 16px;
-  pointer-events: none;
-  user-select: none;
+  /* pointer-events: none;
+  user-select: none; */
 }
 
 /* Paragraph Styles */
@@ -507,7 +507,7 @@
   }
   
   .editor-placeholder {
-    color: #8b949e;
+    color: #e0eeff;
   }
   
   .editor-code {

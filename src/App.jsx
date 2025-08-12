@@ -1,12 +1,19 @@
 import Editor from './components/Editor';
 import Settings from './components/Settings';
 import { SettingsProvider } from './contexts/SettingsContext';
+import './index.css';
+import './App.css';
 import './styles/Editor.css';
 import './styles/Settings.css';
+import './styles/FloatingToolbars.css';
+import './themes/EditorTheme.css';
 import './styles/TreeView.css';
 import './styles/Toast.css';
 import './styles/ComponentPicker.css';
-import './App.css'
+import './styles/EmojiPicker.css';
+import './styles/TypeaheadMenu.css';
+import './styles/ActionsPlugin.css';
+import './styles/UI.css';
 
 function App() {
   return (

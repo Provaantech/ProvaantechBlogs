@@ -1,0 +1,375 @@
+/**
+ * Floating Toolbars CSS
+ * Styles for floating text format toolbar and mentions popup
+ */
+
+/* Floating Text Format Toolbar */
+.floating-text-format-popup {
+  display: flex;
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  gap: 2px;
+}
+
+.popup-item {
+  width: 28px;
+  height: 28px;
+  background: #4a5568;
+  border: 1px solid #718096;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.popup-item:hover {
+  background: #718096;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.popup-item.active {
+  background: #3182ce;
+  color: white;
+  border-color: #2c5aa0;
+}
+
+.popup-item.spaced {
+  margin-right: 2px;
+}
+
+.popup-item:last-child {
+  margin-right: 0;
+}
+
+/* Format Icons */
+.format.bold::before {
+  content: 'B';
+  font-weight: bold;
+}
+
+.format.italic::before {
+  content: 'I';
+  font-style: italic;
+}
+
+.format.underline::before {
+  content: 'U';
+  text-decoration: underline;
+}
+
+.format.strikethrough::before {
+  content: 'S';
+  text-decoration: line-through;
+}
+
+.format.subscript::before {
+  content: 'X₂';
+  font-size: 12px;
+}
+
+.format.superscript::before {
+  content: 'X²';
+  font-size: 12px;
+}
+
+.format.code::before {
+  content: '</>';
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.format.link::before {
+  content: '🔗';
+  font-size: 12px;
+}
+
+/* Mentions Popup */
+.typeahead-popover {
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-top: 25px;
+  position: absolute;
+  z-index: 1000;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.typeahead-popover ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.typeahead-popover ul::-webkit-scrollbar {
+  display: none;
+}
+
+.typeahead-popover ul {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.typeahead-popover .item {
+  margin: 0;
+  min-width: 180px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  color: #e2e8f0;
+  transition: background-color 0.2s ease;
+}
+
+.typeahead-popover .item.selected {
+  background: #4a5568;
+  color: #ffffff;
+}
+
+.typeahead-popover .item:hover {
+  background: #4a5568;
+  color: #ffffff;
+}
+
+.typeahead-popover .item:first-child {
+  border-radius: 8px 8px 0px 0px;
+}
+
+.typeahead-popover .item:last-child {
+  border-radius: 0px 0px 8px 8px;
+}
+
+.typeahead-popover .item:only-child {
+  border-radius: 8px;
+}
+
+.typeahead-popover .item .icon {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  user-select: none;
+  margin-right: 8px;
+  line-height: 16px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.typeahead-popover .item .icon img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.typeahead-popover .item .text {
+  display: flex;
+  line-height: 20px;
+  flex-shrink: 1;
+  min-width: 150px;
+}
+
+/* Mentions in text */
+.editor-mention {
+  color: rgb(5, 150, 255);
+  font-weight: bold;
+  text-decoration: none;
+  background-color: rgba(5, 150, 255, 0.1);
+  border-bottom: 1px solid rgba(5, 150, 255, 0.3);
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.editor-mention:hover {
+  background-color: rgba(5, 150, 255, 0.2);
+  border-bottom-color: rgba(5, 150, 255, 0.5);
+}
+
+/* Emoji styles */
+.emoji {
+  color: transparent;
+  caret-color: rgb(5, 5, 5);
+  background-size: 16px 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin: 0 -1px;
+}
+
+.emoji-inner {
+  padding: 0 0.15em;
+}
+
+/* Editor scroller and container */
+.editor-scroller {
+  min-height: 150px;
+  border: 0;
+  display: flex;
+  position: relative;
+  outline: 0;
+  z-index: 0;
+  overflow: auto;
+  resize: vertical;
+}
+
+.editor {
+  background: white;
+  position: relative;
+  outline: none;
+  flex: auto;
+  resize: none;
+  caret-color: #000000 !important;
+  font-size: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  text-align: left;
+  border: 0px;
+  padding: 15px;
+  color: #000000;
+}
+
+.editor:focus {
+  outline: none;
+}
+
+/* Ensure cursor is visible in ContentEditable */
+.editor-input {
+  caret-color: #000000 !important;
+  color: #000000 !important;
+}
+
+.editor-input:focus {
+  outline: none !important;
+  caret-color: #000000 !important;
+}
+
+/* Placeholder styling */
+.editor-placeholder {
+  color: #9ca3af;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Floating Link Editor */
+.link-editor {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.link-input {
+  background: #2d3748;
+  border: 2px solid #4a5568;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  min-width: 250px;
+  outline: none;
+  font-family: inherit;
+  color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.link-input:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.3);
+  background: #2d3748;
+  color: #ffffff;
+}
+
+.link-input::placeholder {
+  color: #a0aec0;
+  opacity: 1;
+}
+
+.link-view {
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-family: inherit;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  gap: 8px;
+}
+
+.link-view a {
+  color: #63b3ed;
+  text-decoration: none;
+  margin-right: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+  font-weight: 500;
+}
+
+.link-view a:hover {
+  text-decoration: underline;
+  color: #90cdf4;
+}
+
+.link-edit,
+.link-trash {
+  cursor: pointer;
+  padding: 6px 8px;
+  margin-left: 4px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  background: #4a5568;
+  border: 1px solid #718096;
+  color: #e2e8f0;
+  min-width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-edit:hover {
+  background: #718096;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.link-trash:hover {
+  background: #e53e3e;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
